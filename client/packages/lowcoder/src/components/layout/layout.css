@@ -1,0 +1,7 @@
+@media screen and (max-height: 700px) {
+    .sidebar-section{
+      height: 25%;
+      overflow: scroll;
+   
+  }
+}
