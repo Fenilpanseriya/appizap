@@ -121,7 +121,7 @@ const LinkTmpComp = (function () {
           {hasChildren && (
             <span>
               {hasIcon(props.prefixIcon) && <IconWrapper>{props.prefixIcon}</IconWrapper>}
-              <a href={props.linkTarget} target="_blank" style={{ textShadow: props?.style?.textShadow, textDecoration: textDecorationStyle }}>{!!props.text && props.text}</a>
+              <a href={props.linkTarget} target="_blank" style={{fontWeight:props?.style?.fontWeight, textShadow: props?.style?.textShadow, textDecoration: textDecorationStyle }}>{!!props.text && props.text}</a>
               {hasIcon(props.suffixIcon) && <IconWrapper>{props.suffixIcon}</IconWrapper>}
             </span>
           )}

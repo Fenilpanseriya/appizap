@@ -14,7 +14,7 @@ type ControlPlacement = "bottom" | "right" | "modal";
 export const DropdownContainer = styled.div<{ $placement: ControlPlacement }>`
   display: flex;
   height: 32px;
-  background-color:red
+  background-color:blue
   width: ${(props) =>
     props.$placement === "right"
       ? "calc(100% - 96px)"

@@ -74,7 +74,7 @@ import {
 import { faTextWidth } from "@fortawesome/free-solid-svg-icons";
 import appSelectControl from "./appSelectControl";
 import { BoxShadowControl } from "./boxShadowControl";
-import { SelectControl } from "./selectControl";
+import { SelectControl, SelectControlForFontWeight } from "./selectControl";
 
 function isSimpleColorConfig(
   config: SingleColorConfig
@@ -737,7 +737,7 @@ const TitleDiv = styled.div`
 const StyleContent = styled.div`
   border: 1.07px solid #d7d9e0;
   border-radius: 6px;
-  background-color: red;
+  
 
   
   .cm-editor,
@@ -878,9 +878,14 @@ export function styleControl<T extends readonly SingleColorConfig[]>(
       childrenMap[name] = StringControl;
     } else if (name == "boxShadow" || name == "textShadow") {
       childrenMap[name] = BoxShadowControl;
-    } else if (name == "underline") {
+    } else if (name == "underline" ) {
       childrenMap[name] = SelectControl;
-    } else {
+    } 
+    else if(name == "fontWeight"){
+      childrenMap[name]=SelectControlForFontWeight;
+    }
+    
+    else {
       childrenMap[name] = ColorControl;
     }
   });

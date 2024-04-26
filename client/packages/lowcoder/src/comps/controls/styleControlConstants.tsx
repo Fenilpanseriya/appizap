@@ -1343,6 +1343,12 @@ export const LinkStyle = [
     depType: DEP_TYPE.SELF,
     transformer: toSelf,
   },
+  {
+    name: "fontWeight",
+    label: "fontWeight",
+    depType: DEP_TYPE.SELF,
+    transformer: toSelf,
+  }
 ] as const;
 
 export const DividerStyle = [
