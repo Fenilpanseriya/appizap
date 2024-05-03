@@ -988,19 +988,19 @@ var uiCompMap: Registry = {
   //     h: 32,
   //   },
   // },
-  // scanner: {
-  //   name: trans("uiComp.scannerCompName"),
-  //   enName: "Scanner",
-  //   description: trans("uiComp.scannerCompDesc"),
-  //   categories: ["itemHandling"],
-  //   icon: ScannerIcon,
-  //   keywords: trans("uiComp.scannerCompKeywords"),
-  //   comp: ScannerComp,
-  //   layoutInfo: {
-  //     w: 6,
-  //     h: 5,
-  //   },
-  // },
+  scanner: {
+    name: trans("uiComp.scannerCompName"),
+    enName: "Scanner",
+    description: trans("uiComp.scannerCompDesc"),
+    categories: ["itemHandling"],
+    icon: ScannerIcon,
+    keywords: trans("uiComp.scannerCompKeywords"),
+    comp: ScannerComp,
+    layoutInfo: {
+      w: 6,
+      h: 5,
+    },
+  },
   // signature: {
   //   name: trans("uiComp.signatureCompName"),
   //   enName: "Signature",

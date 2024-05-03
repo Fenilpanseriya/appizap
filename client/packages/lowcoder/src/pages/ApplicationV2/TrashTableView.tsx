@@ -26,7 +26,7 @@ const NameWrapper = styled.div`
 `;
 
 const EditBtn = styled(TacoButton)`
-  opacity: 0;
+  opacity: 1;
   min-width: 52px !important;
   width: auto !important;
   height: 24px;
@@ -107,7 +107,7 @@ export const TrashTableView = (props: { resources: HomeRes[] }) => {
           render: (text) => timestampToHumanReadable(text, 30 * 24 * 60 * 60 * 1000),
         },
         {
-          title: " ",
+          title: "Operations",
           dataIndex: "operation",
           width: "298px",
           render: (text, record) => {

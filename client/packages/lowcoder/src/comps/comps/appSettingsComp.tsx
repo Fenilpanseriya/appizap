@@ -17,7 +17,7 @@ import { DEFAULT_THEMEID } from "comps/utils/themeUtil";
 import { StringControl } from "comps/controls/codeControl";
 import { IconControl } from "comps/controls/iconControl";
 import { dropdownControl } from "comps/controls/dropdownControl";
-import { ApplicationCategoriesEnum } from "constants/applicationConstants";
+import { ApplicationCategoriesEnum, headerShowOptions } from "constants/applicationConstants";
 
 const TITLE = trans("appSetting.title");
 const USER_DEFINE = "__USER_DEFINE";
@@ -82,6 +82,11 @@ const OPTIONS = [
   { label: trans("appSetting.autofill"), value: "Infinity" },
   { label: trans("appSetting.userDefined"), value: USER_DEFINE },
 ];
+
+const Header_Options=[
+  {label:"show",value:"show"},
+  {label:"hide",value:"hide"}
+]
 
 const Title = styled.div`
   font-weight: 500;
@@ -166,10 +171,21 @@ const DividerStyled = styled(Divider)`
   border-color: #e1e3eb;
 `;
 
-type AppCategoriesEnumKey = keyof typeof ApplicationCategoriesEnum
+type AppCategoriesEnumKey = keyof typeof ApplicationCategoriesEnum 
 const AppCategories = Object.keys(ApplicationCategoriesEnum).map(
   (cat) => {
     const value = ApplicationCategoriesEnum[cat as AppCategoriesEnumKey];
+    return {
+      label: value,
+      value: cat
+    }
+  }
+)
+
+type headerShowOptionsEnumKey = keyof typeof headerShowOptions
+const headerOptions=Object.keys(headerShowOptions).map(
+  (cat)=>{
+    const value = headerShowOptions[cat as headerShowOptionsEnumKey];
     return {
       label: value,
       value: cat
@@ -185,6 +201,7 @@ const childrenMap = {
   maxWidth: dropdownInputSimpleControl(OPTIONS, USER_DEFINE, "1920"),
   themeId: valueComp<string>(DEFAULT_THEMEID),
   customShortcuts: CustomShortcutsComp,
+  headerDisable:  dropdownControl(headerOptions, headerShowOptions.SHOW_HEADER),
   disableCollision: valueComp<boolean>(false),
 };
 type ChildrenInstance = RecordConstructorToComp<typeof childrenMap> & {
@@ -202,6 +219,7 @@ function AppSettingsModal(props: ChildrenInstance) {
     description,
     icon,
     category,
+    headerDisable
   } = props;
   const THEME_OPTIONS = themeList?.map((theme) => ({
     label: theme.name,
@@ -249,6 +267,10 @@ function AppSettingsModal(props: ChildrenInstance) {
         {category.propertyView({
           label: trans("appSetting.appCategory"),
         })}
+        {headerDisable.propertyView({
+          label: "Show Header",
+
+        })}
         <div className="app-icon">
           {icon.propertyView({
             label: trans("icon"),
@@ -263,6 +285,7 @@ function AppSettingsModal(props: ChildrenInstance) {
           min: 350,
           lastNode: <span>{trans("appSetting.maxWidthTip")}</span>,
         })}
+        
         <Dropdown
           defaultValue={
             themeWithDefault === ""

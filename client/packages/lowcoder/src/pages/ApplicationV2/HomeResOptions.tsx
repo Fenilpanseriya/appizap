@@ -52,6 +52,7 @@ export const HomeResOptions = (props: {
       options = [
         ...options,
         { text: trans("rename"), onClick: () => onRename(res) },
+        
         {
           text: trans("header.duplicate", { type: HomeResInfo[res.type].name.toLowerCase() }),
           onClick: () => {
@@ -102,7 +103,7 @@ export const HomeResOptions = (props: {
     if (res.isManageable) {
       options = [...options, { text: trans("rename"), onClick: () => onRename(res) }];
     }
-    if (res.isDeletable) {
+    if (true || res.isDeletable) {
       options = [
         ...options,
         {

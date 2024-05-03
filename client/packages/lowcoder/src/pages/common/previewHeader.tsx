@@ -196,10 +196,12 @@ export const PreviewHeader = () => {
     </Wrapper>
   );
   return (
-    <Header
+    <>
+    { localStorage.getItem("header")!== "HIDE_HEADER" && <Header
       headerStart={headerStart}
       headerEnd={headerEnd}
       style={{ backgroundColor: brandingConfig?.headerColor ?? "#f7f7f7" }}
-    />
+    /> }
+    </>
   );
 };

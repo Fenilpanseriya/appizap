@@ -135,7 +135,7 @@ export type OptionType = {
   [key: string]: any;
 };
 export type OptionsType = readonly OptionType[];
-export type ValueFromOption<Options extends OptionsType> = Options[number]["value"];
+export type ValueFromOption<Options extends OptionsType> = Options[number ]["value"];
 
 interface DropdownProps<T extends OptionsType> extends Omit<SelectProps, "placement" | "options"> {
   label?: ReactNode;

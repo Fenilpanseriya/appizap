@@ -190,6 +190,7 @@ let TextTmpComp = (function () {
               textAlign: props.horizontalAlignment,
             }}
             title={props.tooltip.value} 
+              
           >
             {props.type === "markdown" ? <TacoMarkDown>{value}</TacoMarkDown> : value}
           </TextContainer>
@@ -205,6 +206,7 @@ let TextTmpComp = (function () {
               label: trans("value"),
               tooltip: trans("textShow.valueTooltip"),
               radioButton: true,
+              
             })}
             {children.text.propertyView({})}
           </Section>

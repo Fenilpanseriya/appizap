@@ -98,6 +98,10 @@ export function dropdownAbstractControl<T extends OptionsType>(
           options={finalOptions}
           onChange={(value) => {
             if (!params.disableDispatchValueChange) {
+              alert(value)
+              if(value==="SHOW_HEADER"||value==="HIDE_HEADER"){
+                localStorage.setItem("header",value);
+              }
               this.dispatchChangeValueAction(value);
             }
             params.onChange?.(value);

@@ -6,7 +6,9 @@ import styled, { css } from "styled-components";
 import { checkOtpValid, checkPhoneValid } from "util/stringUtils";
 import { CustomSelect } from "./customSelect";
 import { CommonErrorLabel, CommonTextLabel } from "./Label";
-
+import { Button } from "antd-mobile";
+import showEye from "../../../lowcoder/src/assets/icons/showEye.svg"
+import hideEye from "../../../lowcoder/src/assets/icons/hideEye.svg"
 const TacoInput = styled(AntdInput)`
   background: #ffffff;
   border: 1px solid #d7d9e0;
@@ -381,10 +383,15 @@ const PasswordInput = (props: {
   const passRef = useRef<InputRef>(null);
   const confirmPassRef = useRef<InputRef>(null);
   const [passwordErrorMsg, setPasswordErrorMsg] = useState("");
+  const [passwordType,setPasswordType]=useState("password")
+  const [confirmPasswordType,setConfirmPasswordType]=useState("password")
   const [confirmErrorMsg, setConfirmErrorMsg] = useState("");
   const { className, mustFill, doubleCheck, onChange, valueCheck, passInputConf, confirmPassConf } =
     props;
   const checkPassword = valueCheck ? valueCheck : (value: string) => [true, ""] as const;
+
+  const [openEyeSvg,setOpenEyeSvg]=useState(false);
+  const [confirmOpenEyeSvg,setConfirmOpenEyeSvg]=useState(false)
   return (
     <>
       <FormInputFiled className={className}>
@@ -395,7 +402,7 @@ const PasswordInput = (props: {
         />
         <TacoInput
           ref={passRef}
-          type="password"
+          type={passwordType}
           placeholder={
             passInputConf?.placeholder
               ? passInputConf?.placeholder
@@ -418,6 +425,16 @@ const PasswordInput = (props: {
             onChange && onChange(e.target.value, valid && confirmPassValid);
           }}
         />
+        <div style={{display:"flex" ,width:"100%",justifyContent:"flex-end",marginTop:"-2.8rem",marginLeft:"-0.5rem"}}>
+          <Button onClick={(e: any) => {
+              e.preventDefault();
+              setPasswordType(passwordType === "password" ? "text" : "password");
+              setOpenEyeSvg(prev=>!prev)
+            }} style={{color:"black",zIndex:100,backgroundColor:"transparent",border:"none"}}
+          >
+            <img src={openEyeSvg ? showEye : hideEye} alt="eye" style={{height:"1rem",width:"1rem"}}/>
+          </Button>
+        </div>
       </FormInputFiled>
       {doubleCheck && (
         <FormInputFiled className={className}>
@@ -432,7 +449,7 @@ const PasswordInput = (props: {
           />
           <TacoInput
             ref={confirmPassRef}
-            type="password"
+            type={confirmPasswordType}
             placeholder={
               confirmPassConf?.placeholder
                 ? confirmPassConf?.placeholder
@@ -447,6 +464,16 @@ const PasswordInput = (props: {
               props.onChange(e.target.value, valid && passValid);
             }}
           />
+          <div style={{display:"flex" ,width:"100%",justifyContent:"flex-end",marginTop:"-2.8rem",marginLeft:"-0.5rem"}}>
+          <Button onClick={(e: any) => {
+              e.preventDefault();
+              setConfirmPasswordType(confirmPasswordType === "password" ? "text" : "password");
+              setConfirmOpenEyeSvg(prevState=>!prevState)
+            }} style={{color:"black",zIndex:100,backgroundColor:"transparent",border:"none"}}
+          >
+            <img src={confirmOpenEyeSvg ? showEye : hideEye} alt="eye" style={{height:"1rem",width:"1rem"}}/>
+          </Button>
+        </div>
         </FormInputFiled>
       )}
     </>

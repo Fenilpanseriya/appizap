@@ -444,6 +444,7 @@ const ResizeableTitle = (props: any) => {
       }
       onResizeStart={(e) => {
         setChildWidth();
+        
         e.stopPropagation();
         e.preventDefault();
       }}

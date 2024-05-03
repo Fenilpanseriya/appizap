@@ -50,6 +50,12 @@ export enum ApplicationCategoriesEnum {
   MAPS_NAVIGATION = "Maps & Navigation",
 };
 
+export enum headerShowOptions{
+  SHOW_HEADER="show",
+  HIDE_HEADER="hide"
+
+}
+
 export const AppUILayoutType: Record<AppTypeEnum, UiLayoutType> = {
   [AppTypeEnum.Application]: "normal",
   [AppTypeEnum.Module]: "module",

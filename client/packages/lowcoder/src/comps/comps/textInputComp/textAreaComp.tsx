@@ -72,13 +72,14 @@ let TextAreaTmpComp = (function () {
     allowClear: BoolControl,
     autoHeight: withDefault(AutoHeightControl, "fixed"),
     style: styleControl(InputLikeStyle),
+    
   };
   return new UICompBuilder(childrenMap, (props) => {
     const [inputProps, validateState] = useTextInputProps(props);
     console.log("input props "+JSON.stringify(inputProps))
     console.log("validate state "+JSON.stringify(validateState))
     return props.label({
-      
+      required: props.required,
       children: (
         <Wrapper $style={props.style}>
           <TextAreaStyled 
@@ -93,6 +94,7 @@ let TextAreaTmpComp = (function () {
       ),
       style: props.style,
       ...validateState,
+      
     });
   })
     .setPropertyViewFn((children) => (

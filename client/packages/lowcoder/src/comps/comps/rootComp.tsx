@@ -107,7 +107,8 @@ function RootView(props: RootViewProps) {
     }
     return <EditorSkeletonView />;
   }
-
+  
+  console.log("res->>> ", comp)
   return (
     <div {...divProps}>
       <PropertySectionContext.Provider value={propertySectionContextValue}>

@@ -79,10 +79,15 @@ export const Table = styled(AntdTable)`
     border-top-left-radius: 8px;
     border-bottom-left-radius: 8px;
   }
+  .ant-table-tbody > tr > td {
+   
+    opacity:1 !important;
+  }
 
   .ant-table-tbody > tr > td.ant-table-cell-row-hover:last-child {
     border-top-right-radius: 8px;
     border-bottom-right-radius: 8px;
+    opacity:1;
   }
 
   td.ant-table-column-sort {
