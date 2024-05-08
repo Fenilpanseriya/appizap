@@ -33,6 +33,7 @@ export const ContainerBaseComp = (function () {
     loading: BoolCodeControl,
   };
   return new ContainerCompBuilder(childrenMap, (props, dispatch) => {
+    
     return (
       <DisabledContext.Provider value={props.disabled}>
         <TriContainer {...props} />
@@ -66,6 +67,7 @@ export const ContainerBaseComp = (function () {
                   {children.container.headerStylePropertyView()}
                 </Section>
               )}
+              
               {children.container.children.showBody.getView() && (
                 <Section name={"Body Style"}>
                   {children.container.bodyStylePropertyView()}
@@ -98,6 +100,7 @@ function convertOldContainerParams(params: CompParams<any>) {
     ) {
       const autoHeight = tempParams.value.autoHeight;
       const scrollbars = tempParams.value.scrollbars;
+      const showPreviewHeader=true
       return {
         ...tempParams,
         value: {
@@ -105,6 +108,7 @@ function convertOldContainerParams(params: CompParams<any>) {
             showHeader: true,
             body: { 0: { view: container } },
             showBody: true,
+            
             showFooter: false,
             autoHeight: autoHeight,
             scrollbars: scrollbars,

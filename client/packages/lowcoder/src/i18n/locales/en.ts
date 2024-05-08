@@ -1464,6 +1464,7 @@ export const en = {
     tableSize: "Table Size",
     hideHeader: "Hide Table Header",
     fixedHeader: "Fixed Table Header",
+    fixedPreviewHeader:"Fixed Preview Header",
     fixedHeaderTooltip: "Header Will Be Fixed for Vertically Scrollable Table",
     fixedToolbar: "Fixed Toolbar",
     fixedToolbarTooltip:

@@ -167,7 +167,7 @@ export type TriContainerProps = TriContainerViewProps & {
 
 export function TriContainer(props: TriContainerProps) {
   const { container, tooltip, disabled, loading } = props;
-  const { showHeader, showFooter } = container;
+  const { showHeader, showFooter, } = container;
   // When the header and footer are not displayed, the body must be displayed
   const showBody = container.showBody || (!showHeader && !showFooter);
   const scrollbars = container.scrollbars;
@@ -245,6 +245,7 @@ export function TriContainer(props: TriContainerProps) {
               />
             </BackgroundColorContext.Provider>
           )}
+          
           {showBody && (
             <BackgroundColorContext.Provider value={bodyStyle.background}>
               {scrollbars ? (

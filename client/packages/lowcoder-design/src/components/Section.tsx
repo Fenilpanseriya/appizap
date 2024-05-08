@@ -152,6 +152,7 @@ export const BaseSection = (props: ISectionConfig<ReactNode> & {createPage?: () 
       )}
       <ShowChildren $show={open ? "flex" : "none"} $noMargin={props.noMargin}>
         {props.children}
+        
       </ShowChildren>
     </SectionItem>
   );
