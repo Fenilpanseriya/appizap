@@ -221,6 +221,7 @@ function AppSettingsModal(props: ChildrenInstance) {
     category,
     headerDisable
   } = props;
+  //alert("header disable is "+headerDisable.value)
   const THEME_OPTIONS = themeList?.map((theme) => ({
     label: theme.name,
     value: theme.id + "",
@@ -322,12 +323,14 @@ function AppSettingsModal(props: ChildrenInstance) {
 }
 
 export const AppSettingsComp = new MultiCompBuilder(childrenMap, (props) => {
+  
   return {
     ...props,
     maxWidth: Number(props.maxWidth),
   };
 })
   .setPropertyViewFn((children) => {
+    console.log("childrens are "+children);
     const themeList = useSelector(getThemeList) || [];
     const defaultTheme = (useSelector(getDefaultTheme) || "").toString();
     return <AppSettingsModal {...children} themeList={themeList} defaultTheme={defaultTheme} />;

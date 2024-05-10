@@ -93,7 +93,7 @@ function CachedPropertyView(props: {
           <CompExposingContext.Provider value={hints}>
             <SearchTextContext.Provider value={searchText}>
               <ScrollBar>
-                <div style={{ paddingBottom: "80px" }}>{props.comp.getPropertyView()}</div>
+                <div style={{ paddingBottom: "80px"}}>{props.comp.getPropertyView()}</div>
               </ScrollBar>
             </SearchTextContext.Provider>
           </CompExposingContext.Provider>

@@ -142,7 +142,7 @@ export const BaseSection = (props: ISectionConfig<ReactNode> & {createPage?: () 
     <SectionItem $width={props.width} style={props.style}>
       {props.name && (
         <SectionLabelDiv onClick={handleToggle} className={"section-header"}>
-          <SectionLabel>{props.name}</SectionLabel>
+          <SectionLabel >{props.name}</SectionLabel>
           <SectionIconsContainer>
             {props.createPage && <AddIcon onClick={handleOnClick} />}
             {open && props.additionalButton}

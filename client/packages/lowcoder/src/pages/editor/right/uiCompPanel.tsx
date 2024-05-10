@@ -164,6 +164,7 @@ export const UICompPanel = () => {
               <BaseSection
                 noMargin
                 width={288}
+                
                 name={uiCompCategoryNames[key as UICompCategory]}
               >
                 <InsertContain>

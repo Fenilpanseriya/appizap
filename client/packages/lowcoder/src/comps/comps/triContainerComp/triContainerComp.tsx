@@ -38,6 +38,7 @@ const childrenMap = {
   showHeader: BoolControl.DEFAULT_TRUE,
   showBody: BoolControl.DEFAULT_TRUE,
   showFooter: BoolControl,
+  headerDisable:BoolControl,
   autoHeight: AutoHeightControl,
   scrollbars: withDefault(BoolControl, false),
   style: styleControl(ContainerStyle),
@@ -125,7 +126,7 @@ export class TriContainerComp extends TriContainerBaseComp implements IContainer
       this.children.showHeader.propertyView({ label: trans("prop.showHeader") }),
       this.children.showBody.propertyView({ label: trans("prop.showBody") }),
       this.children.showFooter.propertyView({ label: trans("prop.showFooter") }),
-      
+      this.children.headerDisable.propertyView({ label: "hederDisable" }),
     ];
   }
 

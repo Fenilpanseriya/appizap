@@ -418,6 +418,12 @@ const RADIUS = {
   radius: "borderRadius",
 } as const;
 
+export const POSITION={
+  name: "position",
+  label: "position",
+  position: "position",
+}
+
 const BORDER_WIDTH = {
   name: "borderWidth",
   label: trans("style.borderWidth"),
@@ -761,6 +767,8 @@ export const MarginStyle = [
   },
 ];
 
+
+
 export const ContainerStyle = [
   // ...BG_STATIC_BORDER_RADIUS,
   getStaticBorder(),
@@ -768,6 +776,7 @@ export const ContainerStyle = [
   getBackground(),
   getLoaderColor(),
   RADIUS,
+ 
   BORDER_WIDTH,
   MARGIN,
   PADDING,
@@ -796,6 +805,7 @@ export const ContainerStyle = [
     label: trans("style.backgroundImageOrigin"),
     backgroundImageOrigin: "backgroundImageOrigin",
   },
+  
   {
     name: "boxShadow",
     label: trans("link.box-shadow"),

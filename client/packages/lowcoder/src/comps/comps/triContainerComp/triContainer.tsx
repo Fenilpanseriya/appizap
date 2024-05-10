@@ -16,6 +16,9 @@ import {
 import { TriContainerViewProps } from "../triContainerComp/triContainerCompBuilder";
 import { Spin } from "antd";
 import { LoadingOutlined } from "@ant-design/icons";
+import { useLocation } from "react-router";
+import "./triContainer.css"
+import { trans } from "@lowcoder-ee/i18n";
 const getStyle = (style: ContainerStyleType) => {
   return css`
     border-color: ${style.border};
@@ -167,7 +170,7 @@ export type TriContainerProps = TriContainerViewProps & {
 
 export function TriContainer(props: TriContainerProps) {
   const { container, tooltip, disabled, loading } = props;
-  const { showHeader, showFooter, } = container;
+  const { showHeader, showFooter,headerDisable } = container;
   // When the header and footer are not displayed, the body must be displayed
   const showBody = container.showBody || (!showHeader && !showFooter);
   const scrollbars = container.scrollbars;
@@ -186,9 +189,13 @@ export function TriContainer(props: TriContainerProps) {
   const bodyHeight = showBody ? (showHeader ? 143 : 142) : 0;
   const footerHeight = showFooter ? (showBody ? 47 : 46) : 0;
   const loadingStateHeight = headerHeight + bodyHeight + footerHeight;
-
+  const location=useLocation();
+  const mode=location.pathname.split("/").pop()
+  
+  const isPreviewMode=location.pathname.split("/").pop()==="preview"
+  //alert(isPreviewMode)
   return (
-    <div style={{ padding: style.margin, height: "100%" }}>
+    <div style={{ padding: style.margin, height: "100%",position:"sticky",backgroundColor:"cyan" }}>
       {loading ? (
         <Wrapper $style={style} title={tooltip} disabled={disabled}>
           <Spin
@@ -209,12 +216,13 @@ export function TriContainer(props: TriContainerProps) {
               alignItems: "center",
               justifyContent: "center",
               height: "100%",
+              
             }}
           />
         </Wrapper>
       ) : (
-        <Wrapper $style={style} title={tooltip} disabled={disabled}>
-          {showHeader && (
+        <Wrapper $style={style} title={tooltip} disabled={disabled} className="preview-container" >
+          {( (isPreviewMode && !headerDisable ) || (!isPreviewMode && showHeader)) && (
             <BackgroundColorContext.Provider
               value={headerStyle.headerBackground}>
               <HeaderInnerGrid
@@ -222,6 +230,7 @@ export function TriContainer(props: TriContainerProps) {
                 items={gridItemCompToGridItems(headerItems)}
                 autoHeight={true}
                 emptyRows={5}
+                
                 minHeight="46px"
                 containerPadding={[paddingWidth, 3]}
                 showName={{ bottom: showBody || showFooter ? 20 : 0 }}
@@ -254,6 +263,7 @@ export function TriContainer(props: TriContainerProps) {
                     height: container.autoHeight ? "auto" : "100%",
                     margin: "0px",
                     padding: "0px",
+                    
                   }}>
                   <BodyInnerGrid
                     $showBorder={showHeader}
@@ -303,7 +313,7 @@ export function TriContainer(props: TriContainerProps) {
                   $backgroundImageSize={bodyStyle?.backgroundImageSize}
                   $backgroundImagePosition={bodyStyle?.backgroundImagePosition}
                   $backgroundImageOrigin={bodyStyle?.backgroundImageOrigin}
-                  style={{ padding: bodyStyle.containerBodyPadding }}
+                  style={{ padding: bodyStyle.containerBodyPadding,BackgroundColorContext }}
                 />
               )}
             </BackgroundColorContext.Provider>
