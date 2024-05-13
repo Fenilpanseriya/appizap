@@ -486,6 +486,7 @@ class GridLayout extends React.Component<GridLayoutProps, GridLayoutState> {
           bottom: (showName?.bottom ?? 0) + (this.ref.current?.scrollHeight ?? 0),
         }}
         zIndex={zIndex}
+        
       >
         {child}
       </GridItem>
@@ -1012,6 +1013,7 @@ class GridLayout extends React.Component<GridLayoutProps, GridLayoutState> {
       // ...style,
       height: this.containerHeight(),
       ...this.getDefaultStyle(),
+      
     };
 
     const childrenMap: _.Dictionary<typeof children[0]> = _.fromPairs(

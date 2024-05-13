@@ -400,6 +400,7 @@ export const en = {
     backgroundImageSize: "BG Size",
     backgroundImagePosition: "BG Position",
     backgroundImageOrigin: "BG Origin",
+    position:"position",
     headerBackgroundImage: "BgImage",
     headerBackgroundImageRepeat: "BgImage Repeat",
     headerBackgroundImageSize: "BgImage Size",

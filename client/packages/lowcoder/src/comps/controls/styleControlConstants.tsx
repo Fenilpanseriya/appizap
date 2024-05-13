@@ -597,6 +597,8 @@ const HEADER_BACKGROUND = {
   transformer: toSelf,
 } as const;
 
+
+
 const BG_STATIC_BORDER_RADIUS = [
   getBackground(),
   getStaticBorder(),
@@ -780,6 +782,7 @@ export const ContainerStyle = [
   BORDER_WIDTH,
   MARGIN,
   PADDING,
+  
   {
     name: "backgroundImage",
     label: trans("style.backgroundImage"),
@@ -812,6 +815,7 @@ export const ContainerStyle = [
     depType: DEP_TYPE.SELF,
     transformer: toSelf,
   },
+ 
 ] as const;
 
 export const ContainerHeaderStyle = [
@@ -842,6 +846,7 @@ export const ContainerHeaderStyle = [
     label: trans("style.backgroundImageOrigin"),
     headerBackgroundImageOrigin: "headerBackgroundImageOrigin",
   },
+  
 ] as const;
 
 export const ContainerBodyStyle = [

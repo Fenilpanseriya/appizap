@@ -1,6 +1,6 @@
-.preview-containers{
+.preview-containers >.previewContainer{
     position: fixed;
-    height: 100%;
-    width: 100%;
-    background-color: aqua;
+    height: 100% !important;
+    width: 100% !important;
+    background-color: red;
 }

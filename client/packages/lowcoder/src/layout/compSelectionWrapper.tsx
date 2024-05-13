@@ -351,13 +351,18 @@ export const CompSelectionWrapper = (props: {
   });
   // log.debug("CompSelectionWrapper. name: ", props.name, " zIndex: ", zIndex);
   const { nameConfig, resizeIconSize } = props;
+  
+  const type=props.compType;
+  //alert("type"+type)
+  const position=type==="container"?"fixed":"absolute"
   return (
-    <div id={props.id} style={{ ...props.style, zIndex }} className={props.className}>
+    <div id={props.id} style={{ ...props.style, zIndex,position:position}} className={props.className}>
       <SelectableDiv
         {...selectableDivProps}
         $compType={props.compType}
         ref={wrapperRef}
         $needResizeDetector={needResizeDetector}
+        
       >
         {props.isSelectable && nameConfig.show && (hover || props.isSelected || props.hidden) && (
           <NameDiv
@@ -366,6 +371,7 @@ export const CompSelectionWrapper = (props: {
             $position={nameConfig.pos}
             $isDraggable={props.isDraggable}
             ref={nameDivRef}
+            style={{position:"fixed"}}
           >
             {props.isDraggable && <DragWhiteIcon />}
             <NameLabel>{nameConfig.name}</NameLabel>

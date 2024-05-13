@@ -15,6 +15,7 @@ const FlowContainerWrapper = styled.div<{ $bgColor: string; $maxWidth?: number; 
   min-height: ${(props) => props.$minHeight};
   display: flex;
   flex-direction: column;
+ 
 
   > div {
     margin-bottom: 2px;
@@ -40,7 +41,7 @@ export function FlowContainerView(
   const bgColor = (useContext(ThemeContext)?.theme || defaultTheme).canvas;
 
   return (
-    <FlowContainerWrapper $bgColor={bgColor} $maxWidth={maxWidth} $minHeight={minHeight}>
+    <FlowContainerWrapper $bgColor={bgColor} $maxWidth={maxWidth} $minHeight={minHeight} >
       {layouts.map((layout, index) => {
         const comp = props.items[layout.i];
         if (!comp) {
@@ -49,6 +50,7 @@ export function FlowContainerView(
         return (
           <CompItem key={comp.name}>
             <CompSelectionWrapper
+              
               compType={comp.compType}
               isSelectable={selectable}
               isDraggable={false}

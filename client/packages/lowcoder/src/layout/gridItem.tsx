@@ -179,6 +179,7 @@ export function GridItem(props: GridItemProps) {
         draggableOpts={{
           disabled: !isResizable,
         }}
+        
         className={isResizable ? undefined : "react-resizable-hide"}
         width={position.width}
         height={position.height}
@@ -442,6 +443,7 @@ export function GridItem(props: GridItemProps) {
         ...setTransform(pos),
         opacity: layoutHide ? 0 : undefined,
         pointerEvents: layoutHide ? "none" : "auto",
+        
       },
     });
     // Resizable support. This is usually on but the user can toggle it off.

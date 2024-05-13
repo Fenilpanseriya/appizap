@@ -19,6 +19,7 @@ import { LoadingOutlined } from "@ant-design/icons";
 import { useLocation } from "react-router";
 import "./triContainer.css"
 import { trans } from "@lowcoder-ee/i18n";
+import { position } from "stylis";
 const getStyle = (style: ContainerStyleType) => {
   return css`
     border-color: ${style.border};
@@ -180,7 +181,7 @@ export function TriContainer(props: TriContainerProps) {
     container.body["0"].children.view.getView();
   const { items: footerItems, ...otherFooterProps } = container.footer;
   const { style, headerStyle, bodyStyle, footerStyle } = container;
-
+  
   const editorState = useContext(EditorContext);
   const maxWidth = editorState.getAppSettings().maxWidth;
   const isMobile = checkIsMobile(maxWidth);
@@ -225,12 +226,13 @@ export function TriContainer(props: TriContainerProps) {
           {( (isPreviewMode && !headerDisable ) || (!isPreviewMode && showHeader)) && (
             <BackgroundColorContext.Provider
               value={headerStyle.headerBackground}>
+                
               <HeaderInnerGrid
                 {...otherHeaderProps}
                 items={gridItemCompToGridItems(headerItems)}
                 autoHeight={true}
                 emptyRows={5}
-                
+                className="previewContainer"
                 minHeight="46px"
                 containerPadding={[paddingWidth, 3]}
                 showName={{ bottom: showBody || showFooter ? 20 : 0 }}
@@ -251,6 +253,7 @@ export function TriContainer(props: TriContainerProps) {
                   headerStyle?.headerBackgroundImageOrigin
                 }
                 style={{ padding: headerStyle.containerHeaderPadding }}
+                
               />
             </BackgroundColorContext.Provider>
           )}
